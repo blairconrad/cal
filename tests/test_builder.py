@@ -57,3 +57,17 @@ Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
 
     actual = "\n".join(cal.builder.format_three_months(2022, 4, datetime.date(2023, 4, 9)))
     assert actual == expected
+
+
+def test_format_three_months_with_different_lengths():
+    expected = """\
+      May 2022              June 2022              July 2022      
+Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
+ 1  2  3  4  5  6  7   [bold black]29[/bold black] [bold black]30[/bold black] [bold black]31[/bold black]  1  2  3  4   [bold black]26[/bold black] [bold black]27[/bold black] [bold black]28[/bold black] [bold black]29[/bold black] [bold black]30[/bold black]  1  2
+ 8  9 10 11 12 13 14    5  6  7  8  9 10 11    3  4  5  6  7  8  9
+15 16 17 18 19 20 21   12 13 14 15 16 17 18   10 11 12 13 14 15 16
+22 23 24 25 26 27 28   19 20 21 22 23 24 25   17 18 19 20 21 22 23
+29 30 31 [bold black] 1[/bold black] [bold black] 2[/bold black] [bold black] 3[/bold black] [bold black] 4[/bold black]   26 27 28 29 30 [bold black] 1[/bold black] [bold black] 2[/bold black]   24 25 26 27 28 29 30
+                                              31 [bold black] 1[/bold black] [bold black] 2[/bold black] [bold black] 3[/bold black] [bold black] 4[/bold black] [bold black] 5[/bold black] [bold black] 6[/bold black]"""  # noqa - don't check trailing whitespace in multiline string
+    actual = "\n".join(cal.builder.format_three_months(2022, 5, datetime.date(2023, 4, 9)))
+    assert actual == expected
