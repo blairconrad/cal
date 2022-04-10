@@ -13,16 +13,17 @@ def format_month(year, month, today=None):
     for week in c.monthdatescalendar(year, month):
         cell_values = []
         for day in week:
+            value = f"{day.day:2}"
             if day.month == month:
-                value = f"{day.day:2}"
                 if day.day == today:
                     value = f"[bold cyan]{value}[/bold cyan]"
-                cell_values.append(value)
             else:
-                cell_values.append("  ")
+                value = f"[bold black]{value}[/bold black]"
+
+            cell_values.append(value)
         yield " ".join(cell_values)
 
 
 def print_month(year, month, today=None):
-    console = rich.console.Console(highlight=False)
+    console = rich.console.Console(highlight=False, style="bold white")
     console.print("\n".join(format_month(year, month, today)))
