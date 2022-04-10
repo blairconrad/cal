@@ -1,18 +1,28 @@
 import calendar
+import rich.console
 
 
-def print_month(year, month):
+def format_month(year, month, today=None):
     calendar.setfirstweekday(calendar.SUNDAY)
-    heading = calendar.month_name[month] + " " + str(year)
-    print(heading.center(20))
-    print(calendar.weekheader(2))
+    month_header = calendar.month_name[month] + " " + str(year)
+
+    yield month_header.center(20)
+    yield calendar.weekheader(2)
 
     c = calendar.Calendar(firstweekday=calendar.SUNDAY)
     for week in c.monthdatescalendar(year, month):
         cell_values = []
         for day in week:
             if day.month == month:
-                cell_values.append(f"{day.day:2}")
+                value = f"{day.day:2}"
+                if day.day == today:
+                    value = f"[bold cyan]{value}[/bold cyan]"
+                cell_values.append(value)
             else:
                 cell_values.append("  ")
-        print(" ".join(cell_values))
+        yield " ".join(cell_values)
+
+
+def print_month(year, month, today=None):
+    console = rich.console.Console(highlight=False)
+    console.print("\n".join(format_month(year, month, today)))

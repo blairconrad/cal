@@ -35,5 +35,6 @@ setuptools.setup(
         "Environment :: Console",
         "Intended Audience :: End Users/Desktop",
     ],
+    install_requires=["rich"],
     entry_points={"console_scripts": ["cal=cal.__main__:main"]},
 )
