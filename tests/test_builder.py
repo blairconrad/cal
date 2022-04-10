@@ -1,7 +1,9 @@
+import datetime
+
 import cal.builder
 
 
-def test_today_highlighted_in_month():
+def test_today_in_month_highlighted():
     expected = """\
      April 2022     
 Su Mo Tu We Th Fr Sa
@@ -11,11 +13,11 @@ Su Mo Tu We Th Fr Sa
 17 18 19 20 21 22 23
 24 25 26 27 28 29 30"""  # noqa - don't check trailing whitespace in multiline string
 
-    actual = "\n".join(cal.builder.format_month(2022, 4, 9))
+    actual = "\n".join(cal.builder.format_month(2022, 4, datetime.date(2022, 4, 9)))
     assert actual == expected
 
 
-def test_no_today_not_highlighted_in_month():
+def test_today_not_in_month_not_highlighted():
     expected = """\
      April 2022     
 Su Mo Tu We Th Fr Sa
@@ -25,5 +27,5 @@ Su Mo Tu We Th Fr Sa
 17 18 19 20 21 22 23
 24 25 26 27 28 29 30"""  # noqa - don't check trailing whitespace in multiline string
 
-    actual = "\n".join(cal.builder.format_month(2022, 4))
+    actual = "\n".join(cal.builder.format_month(2022, 4, datetime.date(2023, 4, 9)))
     assert actual == expected

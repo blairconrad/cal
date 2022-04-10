@@ -5,9 +5,9 @@ import cal.builder
 
 
 def main(*main_args):
-    now = datetime.date.today()
+    today = datetime.date.today()
     console = rich.console.Console(highlight=False, style="bold white")
-    console.print("\n".join(cal.builder.format_month(now.year, now.month, now.today)))
+    console.print("\n".join(cal.builder.format_month(today.year, today.month, today)))
 
 
 if __name__ == "__main__":

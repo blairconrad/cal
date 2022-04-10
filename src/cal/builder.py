@@ -1,7 +1,7 @@
 import calendar
 
 
-def format_month(year, month, today=None):
+def format_month(year, month, today):
     calendar.setfirstweekday(calendar.SUNDAY)
     month_header = calendar.month_name[month] + " " + str(year)
 
@@ -14,7 +14,7 @@ def format_month(year, month, today=None):
         for day in week:
             value = f"{day.day:2}"
             if day.month == month:
-                if day.day == today:
+                if day == today:
                     value = f"[bold cyan]{value}[/bold cyan]"
             else:
                 value = f"[bold black]{value}[/bold black]"
