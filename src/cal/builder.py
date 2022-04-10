@@ -1,5 +1,4 @@
 import calendar
-import rich.console
 
 
 def format_month(year, month, today=None):
@@ -22,8 +21,3 @@ def format_month(year, month, today=None):
 
             cell_values.append(value)
         yield " ".join(cell_values)
-
-
-def print_month(year, month, today=None):
-    console = rich.console.Console(highlight=False, style="bold white")
-    console.print("\n".join(format_month(year, month, today)))

@@ -1,11 +1,13 @@
 import datetime
+import rich.console
 
-import cal.printer
+import cal.builder
 
 
 def main(*main_args):
     now = datetime.date.today()
-    cal.printer.print_month(now.year, now.month, now.day)
+    console = rich.console.Console(highlight=False, style="bold white")
+    console.print("\n".join(cal.builder.format_month(now.year, now.month, now.today)))
 
 
 if __name__ == "__main__":

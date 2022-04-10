@@ -1,4 +1,4 @@
-import cal.printer
+import cal.builder
 
 
 def test_today_highlighted_in_month():
@@ -11,7 +11,7 @@ Su Mo Tu We Th Fr Sa
 17 18 19 20 21 22 23
 24 25 26 27 28 29 30"""  # noqa - don't check trailing whitespace in multiline string
 
-    actual = "\n".join(cal.printer.format_month(2022, 4, 9))
+    actual = "\n".join(cal.builder.format_month(2022, 4, 9))
     assert actual == expected
 
 
@@ -25,5 +25,5 @@ Su Mo Tu We Th Fr Sa
 17 18 19 20 21 22 23
 24 25 26 27 28 29 30"""  # noqa - don't check trailing whitespace in multiline string
 
-    actual = "\n".join(cal.printer.format_month(2022, 4))
+    actual = "\n".join(cal.builder.format_month(2022, 4))
     assert actual == expected
