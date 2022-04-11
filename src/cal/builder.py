@@ -3,6 +3,15 @@ import datetime
 import itertools
 
 
+def format_year(year, today):
+    lines = []
+    for month in range(1, 13, 3):
+        if month != 1:
+            lines.append("")
+        lines += format_three_months(year, month, today)
+    return lines
+
+
 def format_three_months(year, month, today):
     next_month = (datetime.date(year, month, 1) + datetime.timedelta(days=32)).replace(day=1)
     next_next_month = (next_month + datetime.timedelta(days=32)).replace(day=1)
