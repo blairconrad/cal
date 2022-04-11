@@ -40,7 +40,7 @@ def format_month(year, month, today):
             value = f"{day.day:2}"
             if day.month == month:
                 if day == today:
-                    value = f"[bold cyan]{value}[/bold cyan]"
+                    value = f"[bold red]{value}[/bold red]"
             else:
                 value = f"[bold black]{value}[/bold black]"
 
